@@ -13,7 +13,7 @@ Watchix is a movie search platform built with Next.js, Tailwind CSS, and ShadCN.
 
 - **[Next.js](https://nextjs.org/)**: A React framework for building fast and user-friendly web applications.
 - **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
-- **[ShadCN](https://shadcn.dev/)**: A collection of beautifully designed, accessible, and customizable components.
+- **[ShadCN](https://ui.shadcn.com/)**: A collection of beautifully designed, accessible, and customizable components.
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ Make sure you have Node.js and npm (or Yarn) installed on your machine.
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/watchix.git
+   git clone https://github.com/AchrafMahdi/watchix.git
    cd watchix
    ```
 
@@ -47,13 +47,6 @@ Make sure you have Node.js and npm (or Yarn) installed on your machine.
    ```
 
    Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-### Project Structure
-
-- `pages/`: Contains the Next.js pages for the application.
-- `components/`: Reusable components built with ShadCN.
-- `styles/`: Global styles and Tailwind CSS configuration.
-- `public/`: Static assets like images and fonts.
 
 ## Deployment
 
