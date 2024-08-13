@@ -27,7 +27,7 @@ const MoviesByGenre = async ({ params, searchParams }) => {
       {movies !== null ? (
         <>
           <div className="self-start md:pl-16">
-            <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-900">
+            <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
               Explore {genre} movies.
             </h4>
           </div>

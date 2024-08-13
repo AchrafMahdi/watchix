@@ -25,7 +25,7 @@ const Search = async ({ searchParams }) => {
       {movies.results.length > 0 ? (
         <>
           <div>
-            <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-900">
+            <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
               Explore Popular Series, Films, and More
             </h4>
           </div>
@@ -42,7 +42,7 @@ const Search = async ({ searchParams }) => {
           </div>
         </>
       ) : (
-        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-900 mt-20 p-4">
+        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-20 p-4">
           No results for "{title}".
           <Link
             className="inline-flex flex-row items-center  gap-0 text-base underline w-full"

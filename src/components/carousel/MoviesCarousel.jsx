@@ -58,8 +58,8 @@ function MoviesCarousel({
           </Link>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="text-black font-thin text-6xl  hover:text-gray-700" />
-      <CarouselNext className="text-black font-thin text-6xl  hover:text-gray-700" />
+      <CarouselPrevious className="font-thin text-6xl" />
+      <CarouselNext className="font-thin text-6xl" />
     </Carousel>
   );
 }

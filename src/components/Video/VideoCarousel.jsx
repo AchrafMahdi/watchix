@@ -51,8 +51,8 @@ const VideoCarousel = ({ data }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="text-gray-900 font-thin text-6xl  hover:text-gray-700" />
-        <CarouselNext className="text-gray-900 font-thin text-6xl  hover:text-gray-700" />
+        <CarouselPrevious className="font-thin text-6xl" />
+        <CarouselNext className="font-thin text-6xl" />
       </Carousel>
     </>
   );

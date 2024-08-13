@@ -44,10 +44,10 @@ const MovieDetails = async ({ params }) => {
               className="w-full h-full object-cover"
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               alt=""
-              width={1280} // You can set a default width
+              width={1280}
               height={720}
             />
-            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight first:mt-0 absolute bottom-2 left-1 md:left-8 text-white z-[999]">
+            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight first:mt-0 absolute bottom-2 left-1 md:left-8 z-[999] text-gray-50">
               {movie.title}{" "}
               <span className="text-gray-400">
                 ({new Date(movie.release_date).getFullYear()})
@@ -61,7 +61,7 @@ const MovieDetails = async ({ params }) => {
                   <h1 className="text-2xl font-semibold tracking-tight first:mt-0">
                     Overview
                   </h1>
-                  <p className="leading-6 text-gray-700 [&:not(:first-child)]:mt-2 w-[90%]">
+                  <p className="leading-6  [&:not(:first-child)]:mt-2 w-[90%]">
                     {movie.overview}
                   </p>
                   {movie.tagline && (
@@ -81,25 +81,37 @@ const MovieDetails = async ({ params }) => {
                   )}
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
                     Status:{" "}
-                    <span className="text-sm text-gray-600 font-light">
+                    <span className="text-sm text-muted-foreground font-light">
                       {movie.status}
                     </span>
                   </h5>
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
                     Genres:{" "}
-                    <span className="text-sm font-light text-gray-600">
+                    <span className="text-sm font-light text-muted-foreground">
                       {movie.genres.map((g, index) =>
                         movie.genres[index + 1] ? (
-                          <span key={index}>{g.name + ", "}</span>
+                          <Link
+                            className="hover:text-gray-500 transition-colors duration-100"
+                            href={`/movie/genre/${g.name.toLowerCase()}`}
+                            key={index}
+                          >
+                            {g.name + ", "}
+                          </Link>
                         ) : (
-                          <span key={index}>{g.name + "."}</span>
+                          <Link
+                            className="hover:text-gray-500 transition-colors duration-100"
+                            href={`/movie/genre/${g.name.toLowerCase()}`}
+                            key={index}
+                          >
+                            {g.name + "."}
+                          </Link>
                         )
                       )}
                     </span>
                   </h5>
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
                     Budget:{" "}
-                    <span className="text-sm font-light text-gray-600">
+                    <span className="text-sm font-light text-muted-foreground">
                       {parseInt(movie.budget) > 0
                         ? "$" + parseInt(movie.budget).toLocaleString()
                         : "-"}
@@ -107,7 +119,7 @@ const MovieDetails = async ({ params }) => {
                   </h5>
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
                     Revenue:{" "}
-                    <span className="text-sm font-light text-gray-600">
+                    <span className="text-sm font-light text-muted-foreground">
                       {parseInt(movie.revenue) > 0
                         ? "$" + parseInt(movie.revenue).toLocaleString()
                         : "-"}

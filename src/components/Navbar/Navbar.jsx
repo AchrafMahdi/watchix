@@ -57,7 +57,7 @@ const Navbar = () => {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="block w-full p-1 ps-10 text-sm text-gray-50 placeholder-slate-200 border border-gray-100 rounded-sm  bg-transparent outline-none"
+            className="block w-full p-1 ps-10 text-sm   border border-border rounded-sm  bg-transparent outline-none"
             placeholder="Search Movies, Documentaries..."
             required
           />
