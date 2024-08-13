@@ -47,7 +47,7 @@ const MoviesByGenre = async ({ params, searchParams }) => {
         </>
       ) : (
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-900">
-          No results for {`&quot;${genre}&quot;`}.
+          No results for {`"${genre}"`}.
         </h4>
       )}
     </div>
