@@ -2,12 +2,12 @@ import HeroCarousel from "@/components/carousel/HeroCarousel";
 import MoviesCarousel from "@/components/carousel/MoviesCarousel";
 import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Hero/Hero";
+import HeroWithPlayer from "@/components/Hero/HeroWithPlayer";
 import { Separator } from "@/components/ui/separator";
 import { MoviesApiCalls } from "@/lib/utils";
 
 const Home = async () => {
   const trendingMovies = await MoviesApiCalls.trending();
-  const discoverMovies = await MoviesApiCalls.discover();
   const upcomingMovies = await MoviesApiCalls.upcoming();
   const popularMovies = await MoviesApiCalls.popular();
   const RomanceMovies = await MoviesApiCalls.getMovieByGenre("Romance");
@@ -26,7 +26,7 @@ const Home = async () => {
   return (
     <>
       <div className="w-full relative overflow-hidden">
-        <Hero data={discoverMovies} />
+        <Hero withTrailer />
         <div className="flex justify-start md:justify-center items-center mt-4 pl-1 md:pl-0">
           {trendingMovies && (
             <div className="md:w-[90%]">
