@@ -1,0 +1,134 @@
+"use client";
+import Image from "next/image";
+import { Button } from "../ui/button";
+import Link from "next/link";
+
+import { Pause, Play } from "lucide-react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+
+const HeroWithPlayer = ({ data, images, videos }) => {
+  const [play, setPlay] = useState(false);
+  const iframeRef = useRef(null);
+  const router = useRouter();
+
+  const handlePauseClick = () => {
+    setPlay(false);
+
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        "*"
+      );
+    }
+  };
+
+  const handlePlayClick = () => {
+    setPlay(true);
+
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(
+        '{"event":"command","func":"playVideo","args":""}',
+        "*"
+      );
+    }
+  };
+
+  return (
+    <div>
+      {data && (
+        <div className="bg-gray-800 w-full h-[80vh] relative ">
+          <div
+            className={`${
+              play ? "z-[11] opacity-0" : "z-[21] opacity-100"
+            } transition-opacity duration-1000`}
+          >
+            <div className={`w-full h-full sm:hidden`}>
+              <Image
+                className="object-cover"
+                src={`https://image.tmdb.org/t/p/original${data.results[0].poster_path}`}
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+              />
+            </div>
+            <div className={`w-full h-full hidden sm:block`}>
+              <Image
+                className="object-cover"
+                src={`https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`}
+                alt=""
+                priority
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+              />
+            </div>
+          </div>
+
+          <div
+            className={`w-full h-full relative ${
+              !play ? "z-[-11] opacity-0" : "z-[21] opacity-100"
+            }`}
+          >
+            <iframe
+              id="player"
+              ref={iframeRef}
+              src={`https://www.youtube-nocookie.com/embed/${
+                videos.results.filter(
+                  (v) => v.type.toLowerCase() === "trailer"
+                )[0].key
+              }?loop=1&rel=0&cc_load_policy=1&iv_load_policy=3&fs=0&color=white&controls=0&disablekb=1&frameborder="0"&enablejsapi=1`}
+              className="absolute top-0 left-0 w-full h-full"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent"></div>
+
+          <div className="absolute bottom-0 md:left-6 p-2">
+            <Image
+              width={300} // Adjust width based on your design needs
+              height={150} // Adjust height based on your design needs
+              className="object-contain" // Ensure the logo scales properly without distortion
+              src={`https://image.tmdb.org/t/p/w300${images.logos[0].file_path}`}
+              alt="Logo"
+            />
+            <div className="">
+              <p className="text-gray-300 text-sm w-80 line-clamp-3">
+                {data.results[0].overview}
+              </p>
+            </div>
+            <div className="py-2 flex felx-row gap-3">
+              <Button
+                onClick={() => (!play ? handlePlayClick() : handlePauseClick())}
+                size="lg"
+                className="z-[21] inline-flex flex-row items-center justify-center gap-2"
+              >
+                {play ? (
+                  <>
+                    <Pause size={16} fill="black" /> Pause trailer
+                  </>
+                ) : (
+                  <>
+                    <Play size={16} fill="black" /> Play trailer
+                  </>
+                )}
+              </Button>
+
+              <Button
+                onClick={() => router.push(`/movie/${data.results[0].id}`)}
+                size="lg"
+                className="z-[21]"
+              >
+                More details
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default HeroWithPlayer;
