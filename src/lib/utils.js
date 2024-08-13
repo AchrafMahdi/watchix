@@ -18,7 +18,7 @@ export const MoviesApiCalls = {
   },
   discover: async () => {
     const res = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_video=true&language=en-US`,
       { next: { revalidate: 3600 } },
       { cache: "force-cache" }
     );
@@ -51,6 +51,14 @@ export const MoviesApiCalls = {
   video: async (id) => {
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`,
+      { next: { revalidate: 3600 } },
+      { cache: "force-cache" }
+    );
+    return res.json();
+  },
+  getMovieImages: async (id) => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}&language=en`,
       { next: { revalidate: 3600 } },
       { cache: "force-cache" }
     );
@@ -187,3 +195,20 @@ const genres = [
     name: "Western",
   },
 ];
+
+export async function get_average_rgb(src) {
+  /* https://stackoverflow.com/questions/2541481/get-average-color-of-image-via-javascript */
+  return new Promise((resolve) => {
+    let context = document.createElement("canvas").getContext("2d");
+    context.imageSmoothingEnabled = true;
+
+    let img = new Image();
+    img.src = src;
+    img.crossOrigin = "";
+
+    img.onload = () => {
+      context.drawImage(img, 0, 0, 1, 1);
+      resolve(context.getImageData(0, 0, 1, 1).data.slice(0, 3));
+    };
+  });
+}
