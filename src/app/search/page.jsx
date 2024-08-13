@@ -43,7 +43,7 @@ const Search = async ({ searchParams }) => {
         </>
       ) : (
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-20 p-4">
-          No results for "{title}".
+          No results for {`&quot;${title}&quot;`}.
           <Link
             className="inline-flex flex-row items-center  gap-0 text-base underline w-full"
             href={`/`}

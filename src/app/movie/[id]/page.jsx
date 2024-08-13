@@ -66,7 +66,7 @@ const MovieDetails = async ({ params }) => {
                   </p>
                   {movie.tagline && (
                     <blockquote className="mt-2 border-l-2 pl-6 italic">
-                      "{movie.tagline}"
+                      {`&quot;${movie.tagline}&quot;`}
                     </blockquote>
                   )}
                 </div>
