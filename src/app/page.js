@@ -2,7 +2,6 @@ import HeroCarousel from "@/components/carousel/HeroCarousel";
 import MoviesCarousel from "@/components/carousel/MoviesCarousel";
 import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Hero/Hero";
-import HeroWithPlayer from "@/components/Hero/HeroWithPlayer";
 import { Separator } from "@/components/ui/separator";
 import { MoviesApiCalls } from "@/lib/utils";
 
@@ -29,7 +28,7 @@ const Home = async () => {
         <Hero withTrailer />
         <div className="flex justify-start md:justify-center items-center mt-4 pl-1 md:pl-0">
           {trendingMovies && (
-            <div className="md:w-[90%]">
+            <div className="w-full md:w-[90%]">
               <MoviesCarousel data={trendingMovies.results} name={"Trending"} />
             </div>
           )}
@@ -37,14 +36,14 @@ const Home = async () => {
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
           {popularMovies && (
-            <div className="md:w-[90%]">
+            <div className="w-full md:w-[90%]">
               <MoviesCarousel data={popularMovies.results} name={"Popular"} />
             </div>
           )}
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {upcomingMovies && (
               <MoviesCarousel
                 withDetails
@@ -58,7 +57,7 @@ const Home = async () => {
         <HeroCarousel data={RomanceMovies.results} title={"Love & Romance"} />
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {DramaMovies && (
               <MoviesCarousel
                 data={DramaMovies.results}
@@ -70,7 +69,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {ComedyMovies && (
               <MoviesCarousel
                 data={ComedyMovies.results}
@@ -82,7 +81,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {horrorMovies && (
               <MoviesCarousel
                 data={horrorMovies.results}
@@ -94,7 +93,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {warMovies && (
               <MoviesCarousel
                 data={warMovies.results}
@@ -109,7 +108,7 @@ const Home = async () => {
         <HeroCarousel data={animationMovies.results} title={"Animation"} />
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {actionMovies && (
               <MoviesCarousel
                 data={actionMovies.results}
@@ -121,7 +120,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {topRatedMovies && (
               <MoviesCarousel
                 data={topRatedMovies.results}
@@ -134,7 +133,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {fantasyMovies && (
               <MoviesCarousel
                 data={fantasyMovies.results}
@@ -148,7 +147,7 @@ const Home = async () => {
         <HeroCarousel data={mysteryMovies.results} title={"Mystery"} />
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {familyMovies && (
               <MoviesCarousel
                 data={familyMovies.results}
@@ -160,7 +159,7 @@ const Home = async () => {
         </div>
         <Separator className="w-[80%] my-6 mx-auto" />
         <div className="flex justify-start md:justify-center items-center pl-1 md:pl-0">
-          <div className="md:w-[90%]">
+          <div className="md:w-[90%] w-full">
             {DocumentaryMovies && (
               <MoviesCarousel
                 data={DocumentaryMovies.results}
