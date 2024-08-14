@@ -88,11 +88,20 @@ export const MoviesApiCalls = {
       return null;
     }
   },
-  search: async (title) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&api_key=${API_KEY}`,
-      { cache: "no-store" }
-    );
+  search: async (title, page = null) => {
+    if (page === null || page === 1) {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&api_key=${API_KEY}`,
+        { cache: "no-store" }
+      );
+      return res.json();
+    } else {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&api_key=${API_KEY}&page=${page}`,
+        { cache: "no-store" }
+      );
+      return res.json();
+    }
     return res.json();
   },
   getMovieById: async (id) => {
