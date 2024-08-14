@@ -1,4 +1,5 @@
 import PosterCard from "@/components/cards/PosterCard";
+import PaginationControls from "@/components/pagination/PaginationControls";
 import { MoviesApiCalls } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -11,11 +12,12 @@ export const generateMetadata = ({ searchParams }) => {
   };
 };
 
-const Search = async ({ searchParams }) => {
+const Search = async ({ searchParams, params }) => {
   const { title } = searchParams;
+  const page = searchParams["page"] || 1;
   let movies = null;
   if (title) {
-    movies = await MoviesApiCalls.search(title);
+    movies = await MoviesApiCalls.search(title, page);
   } else {
     movies = await MoviesApiCalls.trending();
   }
@@ -29,17 +31,19 @@ const Search = async ({ searchParams }) => {
               Explore Popular Series, Films, and More
             </h4>
           </div>
-          <div className="flex flex-row flex-wrap gap-3">
-            {movies.results.map((movie) => (
-              <Link key={movie.id} href={`/movie/${movie.id}`}>
-                <PosterCard
-                  image={movie.backdrop_path}
-                  size="massive"
-                  title={movie.title}
-                />
-              </Link>
-            ))}
+          <div className="flex flex-row flex-wrap gap-3 md:w-[90%] mx-auto">
+            {movies !== null &&
+              movies.results.map((movie) => (
+                <Link key={movie.id} href={`/movie/${movie.id}`}>
+                  <PosterCard
+                    image={movie.poster_path}
+                    size="big"
+                    title={movie.title}
+                  />
+                </Link>
+              ))}
           </div>
+          <PaginationControls totalPages={movies.total_pages} />
         </>
       ) : (
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-20 p-4">
