@@ -4,7 +4,7 @@ const PosterCard = ({
   image,
   title,
   size = "big",
-  src = "https://image.tmdb.org/t/p/original",
+  src = "https://image.tmdb.org/t/p/w500",
 }) => {
   const sizes = {
     big: "w-36 h-52 md:w-52 md:h-72",
