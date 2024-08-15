@@ -125,8 +125,7 @@ const Home = async () => {
               <MoviesCarousel
                 data={topRatedMovies.results}
                 name={"Top rated movies"}
-                withDetails
-                withLink
+                withDetails                
               />
             )}
           </div>
