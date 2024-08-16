@@ -5,7 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 export const generateMetadata = ({ searchParams }) => {
-  const query = searchParams["title"] || "Movies"; // Default to "Movies" if no search query is provided
+  const query = searchParams["title"].replace(/%20/g, " ") || "Movies"; // Default to "Movies" if no search query is provided
   return {
     title: `Search Results for "${query}" | Watchix`,
     description: `Browse detailed results for "${query}" on Watchix. Find information, reviews, and more about the films you're looking for.`,
@@ -13,7 +13,7 @@ export const generateMetadata = ({ searchParams }) => {
 };
 
 const Search = async ({ searchParams, params }) => {
-  const { title } = searchParams;
+  const title = searchParams["title"].replace(/%20/g, " ");
   const page = searchParams["page"] || 1;
   let movies = null;
   if (title) {
@@ -26,9 +26,11 @@ const Search = async ({ searchParams, params }) => {
     <div className="mt-16 px-6 flex flex-col gap-y-2 justify-center">
       {movies.results.length > 0 ? (
         <>
-          <div>
+          <div className="self-start md:pl-16">
             <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-              Explore Popular Series, Films, and More
+              {title
+                ? `results for: "${title}"`
+                : "Explore Popular Series, Films, and More"}
             </h4>
           </div>
           <div className="flex flex-row flex-wrap gap-3 md:w-[90%] mx-auto">

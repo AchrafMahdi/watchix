@@ -4,7 +4,7 @@ import { MoviesApiCalls } from "@/lib/utils";
 import Link from "next/link";
 
 export const generateMetadata = async ({ params }) => {
-  const { genre } = params;
+  const genre = params["genre"].replace(/%20/g, " ");
   return {
     title: `${genre.charAt(0).toUpperCase() + genre.slice(1)} Movies | Watchix`,
     description: `Explore a wide range of ${genre} movies on Watchix. Discover top-rated films, hidden gems, and latest releases in the ${genre} genre.`,
