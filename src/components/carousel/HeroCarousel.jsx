@@ -104,7 +104,7 @@ const HeroCarousel = ({ data, title }) => {
                     className="md:basis-[35%] basis-[45%] lg:basis-[20%] sm:basis-[28%] cursor-pointer"
                   >
                     <PosterCard
-                      image={d.backdrop_path}
+                      image={d.backdrop_path || d.poster_path}
                       title={d.title}
                       size="small"
                     />
@@ -116,14 +116,25 @@ const HeroCarousel = ({ data, title }) => {
             </Carousel>
           </div>
         </div>
-        <img
-          className="absolute top-0 left-0 z-[1] bg-center object-cover w-full h-full object-top sm:object-center md:object-bottom lg:object-right transition-opacity opacity-0 duration-[2s]"
-          onLoad={(image) => image.target.classList.remove("opacity-0")}
-          src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}
-          alt=""
-          width={1280}
-          height={720}
-        />
+
+        <div>
+          <div className={`w-full h-full sm:hidden`}>
+            <img
+              className="absolute top-0 left-0 z-[1] bg-center object-cover w-full h-full object-top sm:object-center md:object-bottom lg:object-right"
+              src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
+              alt=""
+            />
+          </div>
+          <div className={`w-full h-full hidden sm:block`}>
+            <img
+              className="absolute top-0 left-0 z-[1] bg-center object-cover w-full h-full object-top sm:object-center md:object-bottom lg:object-right"
+              src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}
+              alt=""
+              width={1280}
+              height={720}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

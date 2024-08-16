@@ -6,7 +6,7 @@ const PosterCard = ({
 }) => {
   const sizes = {
     big: "w-36 h-52 md:w-52 md:h-72",
-    small: "w-40 h-26 md:w-56 md:h-32 ",
+    small: "w-40 max-h-[90px] md:w-56 md:min-h-32 ",
     massive: "w-56 h-32 md:w-72 md:h-40",
   };
 
