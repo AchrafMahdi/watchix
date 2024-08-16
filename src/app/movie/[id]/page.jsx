@@ -89,25 +89,27 @@ const MovieDetails = async ({ params }) => {
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
                     Genres:{" "}
                     <span className="text-sm font-light text-muted-foreground">
-                      {movie.genres.map((g, index) =>
-                        movie.genres[index + 1] ? (
-                          <Link
-                            className="hover:text-gray-500 transition-colors duration-100"
-                            href={`/movie/genre/${g.name.toLowerCase()}`}
-                            key={index}
-                          >
-                            {g.name + ", "}
-                          </Link>
-                        ) : (
-                          <Link
-                            className="hover:text-gray-500 transition-colors duration-100"
-                            href={`/movie/genre/${g.name.toLowerCase()}`}
-                            key={index}
-                          >
-                            {g.name + "."}
-                          </Link>
-                        )
-                      )}
+                      {movie.genres.length > 0
+                        ? movie.genres.map((g, index) =>
+                            movie.genres[index + 1] ? (
+                              <Link
+                                className="hover:text-gray-500 transition-colors duration-100"
+                                href={`/movie/genre/${g.name.toLowerCase()}`}
+                                key={index}
+                              >
+                                {g.name + ", "}
+                              </Link>
+                            ) : (
+                              <Link
+                                className="hover:text-gray-500 transition-colors duration-100"
+                                href={`/movie/genre/${g.name.toLowerCase()}`}
+                                key={index}
+                              >
+                                {g.name + "."}
+                              </Link>
+                            )
+                          )
+                        : "-"}
                     </span>
                   </h5>
                   <h5 className="scroll-m-20 text-base font-semibold tracking-tight">
