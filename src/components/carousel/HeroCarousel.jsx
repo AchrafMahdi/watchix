@@ -9,7 +9,7 @@ import {
 import PosterCard from "../cards/PosterCard";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import { get_average_rgb } from "@/lib/utils";
 const HeroCarousel = ({ data, title }) => {
@@ -21,9 +21,6 @@ const HeroCarousel = ({ data, title }) => {
     try {
       const rgbArray = await get_average_rgb(imageSrc);
       const [red, green, blue] = rgbArray;
-
-      const rgbColor = `rgb(${red}, ${green}, ${blue})`;
-      console.log(`The average color of the image is: ${rgbColor}`);
 
       // Ensure setCommonRgb is defined and accessible
       setCommonRgb([red, green, blue]);

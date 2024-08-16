@@ -9,7 +9,6 @@ import { MoonIcon, SunIcon } from "lucide-react";
 function ModeToggle() {
   const { setTheme, theme } = useTheme();
   function toggleTheme() {
-    console.log(theme);
     if (theme.toLowerCase() === "dark") {
       setTheme("light");
     } else {
