@@ -37,7 +37,7 @@ const HeroWithPlayer = ({ data, images, videos }) => {
   return (
     <div>
       {data && (
-        <div className="bg-gray-800 w-full h-[80vh] relative overflow-hidden">
+        <div className="bg-gray-800 w-full h-fit lg:h-[80vh] relative overflow-hidden">
           <div
             className={`${
               play ? "z-[11] opacity-0" : "z-[21] opacity-100"
@@ -60,8 +60,8 @@ const HeroWithPlayer = ({ data, images, videos }) => {
           </div>
 
           <div
-            className={`w-full h-full relative ${
-              !play ? "z-[-11] opacity-0" : "z-[21] opacity-100"
+            className={`w-full h-full ${
+              !play ? "z-[-11] opacity-0" : "z-[25] opacity-100"
             }`}
           >
             <iframe
