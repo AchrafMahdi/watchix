@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const HeroWithPlayer = ({ data, images, videos }) => {
   const [play, setPlay] = useState(false);
-
+  const [fetchVideo, setFetchVideo] = useState(false);
   const iframeRef = useRef(null);
   const router = useRouter();
 
@@ -24,6 +24,7 @@ const HeroWithPlayer = ({ data, images, videos }) => {
 
   const handlePlayClick = () => {
     setPlay(true);
+    !fetchVideo && setFetchVideo(true);
 
     if (iframeRef.current && iframeRef.current.contentWindow) {
       iframeRef.current.contentWindow.postMessage(
@@ -63,17 +64,19 @@ const HeroWithPlayer = ({ data, images, videos }) => {
               !play ? "z-[-11] opacity-0" : "z-[25] opacity-100"
             }`}
           >
-            <iframe
-              id="player"
-              ref={iframeRef}
-              src={`https://www.youtube-nocookie.com/embed/${
-                videos.results.filter(
-                  (v) => v.type.toLowerCase() === "trailer"
-                )[0].key
-              }?loop=1&rel=0&cc_load_policy=1&iv_load_policy=3&fs=0&color=white&controls=0&disablekb=1&frameborder="0"&enablejsapi=1&autoplay=1`}
-              className="absolute top-0 left-0 w-full h-full"
-              allowFullScreen
-            ></iframe>
+            {fetchVideo && (
+              <iframe
+                id="player"
+                ref={iframeRef}
+                src={`https://www.youtube-nocookie.com/embed/${
+                  videos.results.filter(
+                    (v) => v.type.toLowerCase() === "trailer"
+                  )[0].key
+                }?loop=1&rel=0&cc_load_policy=1&iv_load_policy=3&fs=0&color=white&controls=0&disablekb=1&frameborder="0"&enablejsapi=1&autoplay=1`}
+                className="absolute top-0 left-0 w-full h-full"
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent"></div>
