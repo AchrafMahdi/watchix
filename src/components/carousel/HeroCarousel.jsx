@@ -119,13 +119,13 @@ const HeroCarousel = ({ data, title }) => {
             </Carousel>
           </div>
         </div>
-        <Image
+        <img
           className="absolute top-0 left-0 z-[1] bg-center object-cover w-full h-full object-top sm:object-center md:object-bottom lg:object-right transition-opacity opacity-0 duration-[2s]"
           onLoad={(image) => image.target.classList.remove("opacity-0")}
           src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}
           alt=""
-          width={1280} // Default width
-          height={720} // Default height
+          width={1280}
+          height={720}
         />
       </div>
     </div>

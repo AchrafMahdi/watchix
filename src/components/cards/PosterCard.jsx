@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const PosterCard = ({
   image,
   title,
@@ -19,11 +17,9 @@ const PosterCard = ({
       } bg-gray-500 rounded-md overflow-hidden`}
     >
       <div className="rounded-md overflow-hidden relative">
-        <Image
-          className={`w-full h-full object-cover`}
+        <img
+          className="w-full h-full object-cover"
           src={`${src + image}`}
-          width={1280}
-          height={720}
           alt={title + " poster"}
         />
       </div>

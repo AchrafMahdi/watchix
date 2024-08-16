@@ -37,31 +37,24 @@ const HeroWithPlayer = ({ data, images, videos }) => {
   return (
     <div>
       {data && (
-        <div className="bg-gray-800 w-full h-[80vh] relative ">
+        <div className="bg-gray-800 w-full h-[80vh] relative overflow-hidden">
           <div
             className={`${
               play ? "z-[11] opacity-0" : "z-[21] opacity-100"
             } transition-opacity duration-1000`}
           >
             <div className={`w-full h-full sm:hidden`}>
-              <Image
+              <img
                 className="object-cover"
                 src={`https://image.tmdb.org/t/p/original${data.results[0].poster_path}`}
                 alt=""
-                layout="fill"
-                objectFit="cover"
-                quality={100}
               />
             </div>
             <div className={`w-full h-full hidden sm:block`}>
-              <Image
+              <img
                 className="object-cover"
                 src={`https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`}
                 alt=""
-                priority
-                layout="fill"
-                objectFit="cover"
-                quality={100}
               />
             </div>
           </div>
@@ -87,10 +80,10 @@ const HeroWithPlayer = ({ data, images, videos }) => {
           <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent"></div>
 
           <div className="absolute bottom-0 md:left-6 p-2">
-            <Image
-              width={300} // Adjust width based on your design needs
-              height={150} // Adjust height based on your design needs
-              className="object-contain" // Ensure the logo scales properly without distortion
+            <img
+              width={300}
+              height={150}
+              className="object-contain"
               src={`https://image.tmdb.org/t/p/w300${images.logos[0].file_path}`}
               alt="Logo"
             />

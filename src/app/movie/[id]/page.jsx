@@ -40,13 +40,14 @@ const MovieDetails = async ({ params }) => {
       <div>
         {movie.id ? (
           <div className="bg-gray-800 w-full h-[70vh] relative ">
-            <Image
+            <img
               className="w-full h-full object-cover"
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               alt=""
               width={1280}
               height={720}
             />
+
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight first:mt-0 absolute bottom-2 left-1 md:left-8 z-[999] text-gray-50">
               {movie.title}{" "}
               <span className="text-gray-400">
