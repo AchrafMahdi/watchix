@@ -1,5 +1,4 @@
 import { clsx } from "clsx";
-import next from "next";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs) {
@@ -65,8 +64,9 @@ export const MoviesApiCalls = {
     return res.json();
   },
   getMovieByGenre: async (genre, page = null) => {
+    const formattedGenre = genre.replace(/%20/g, " ");
     const chosenOne = genres.find(
-      (g) => g.name.toLowerCase() === genre.toLowerCase()
+      (g) => g.name.toLowerCase() === formattedGenre.toLowerCase()
     );
     if (chosenOne) {
       if (page === null || page === 1) {

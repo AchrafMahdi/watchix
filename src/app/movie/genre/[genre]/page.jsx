@@ -12,7 +12,7 @@ export const generateMetadata = async ({ params }) => {
 };
 
 const MoviesByGenre = async ({ params, searchParams }) => {
-  const { genre } = params;
+  const genre = params["genre"].replace(/%20/g, " ");
   const page = searchParams["page"] || 1;
   let movies = null;
 
@@ -46,7 +46,7 @@ const MoviesByGenre = async ({ params, searchParams }) => {
           <PaginationControls totalPages={movies.total_pages} />
         </>
       ) : (
-        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-900">
+        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
           No results for {`"${genre}"`}.
         </h4>
       )}
